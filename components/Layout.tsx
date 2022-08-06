@@ -64,18 +64,18 @@ function Layout(props) {
       aside && (aside.current.style.pointerEvents = "none");
     } else {
       layout && layout.current.style.removeProperty("cursor");
-      sidebar && sidebar.current.style.removeProperty("userSelect");
-      sidebar && sidebar.current.style.removeProperty("pointerEvents");
-      nav && nav.current.style.removeProperty("userSelect");
-      nav && nav.current.style.removeProperty("pointerEvents");
-      header && header.current.style.removeProperty("userSelect");
-      header && header.current.style.removeProperty("pointerEvents");
-      footer && footer.current.style.removeProperty("userSelect");
-      footer && footer.current.style.removeProperty("pointerEvents");
-      article && article.current.style.removeProperty("userSelect");
-      article && article.current.style.removeProperty("pointerEvents");
-      aside && aside.current.style.removeProperty("userSelect");
-      aside && aside.current.style.removeProperty("pointerEvents");
+      sidebar && (sidebar.current.style.userSelect = "auto");
+      sidebar && (sidebar.current.style.pointerEvents = "auto");
+      nav && (nav.current.style.userSelect = "auto");
+      nav && (nav.current.style.pointerEvents = "auto");
+      header && (header.current.style.userSelect = "auto");
+      header && (header.current.style.pointerEvents = "auto");
+      footer && (footer.current.style.userSelect = "auto");
+      footer && (footer.current.style.pointerEvents = "auto");
+      article && (article.current.style.userSelect = "auto");
+      article && (article.current.style.pointerEvents = "auto");
+      aside && (aside.current.style.userSelect = "auto");
+      aside && (aside.current.style.pointerEvents = "auto");
     }
   }, [
     resizerLeftMouseDown,
