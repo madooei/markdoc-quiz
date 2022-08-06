@@ -1,0 +1,99 @@
+.layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 5%;
+  border-right: 1px solid #ddd;
+  color: #dcdcdc;
+  background-color:rgb(54, 54, 54)
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* Take the remaining width */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 5%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1; /* Take the remaining height */
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 95%;
+}
+
+.article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 100%;
+  padding: 2rem;
+}
+
+.aside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+}
+
+.vresizer {
+  background-color: #ddd;
+  cursor: ew-resize;
+  width: 3px;
+  min-height: 100%;
+}
+
+.hresizer {
+  background-color: #ddd;
+  cursor: ns-resize;
+  min-width: 100%;
+  height: 3px;
+}

@@ -1,43 +1,11 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import Head from "next/head";
+import type { AppProps } from "next/app";
+import "../public/globals.css";
+import Tile from "../components/Tile";
+import Layout from "../components/Layout";
 
-import { SideNav, TableOfContents, TopNav } from '../components';
-
-import 'prismjs';
-// Import other Prism themes here
-import 'prismjs/components/prism-bash.min';
-import 'prismjs/themes/prism.css';
-
-import '../public/globals.css'
-
-import type { AppProps } from 'next/app'
-
-const TITLE = 'Markdoc';
-const DESCRIPTION = 'A powerful, flexible, Markdown-based authoring framework';
-
-function collectHeadings(node, sections = []) {
-  if (node) {
-    if (node.name === 'Heading') {
-      const title = node.children[0];
-
-      if (typeof title === 'string') {
-        sections.push({
-          ...node.attributes,
-          title
-        });
-      }
-    }
-
-    if (node.children) {
-      for (const child of node.children) {
-        collectHeadings(child, sections);
-      }
-    }
-  }
-
-  return sections;
-}
+const TITLE = "Markdoc";
+const DESCRIPTION = "A powerful, flexible, Markdown-based authoring framework";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { markdoc } = pageProps;
@@ -53,10 +21,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     }
   }
 
-  const toc = pageProps.markdoc?.content
-    ? collectHeadings(pageProps.markdoc.content)
-    : [];
-
   return (
     <>
       <Head>
@@ -68,34 +32,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TopNav>
-        <Link href="/docs">Docs</Link>
-      </TopNav>
-      <div className="page">
-        <SideNav />
-        <main className="flex column">
-          <Component {...pageProps} />
-        </main>
-        <TableOfContents toc={toc} />
-      </div>
-      <style jsx>
-        {`
-          .page {
-            position: fixed; 
-            top: var(--top-nav-height);
-            display: flex;
-            width: 100vw;
-            flex-grow: 1;
-          }
-          main {
-            overflow: auto;
-            height: calc(100vh - var(--top-nav-height));
-            flex-grow: 1;
-            font-size: 16px;
-            padding: 0 2rem 2rem;
-          }
-        `}
-      </style>
+      <Layout Nav={<Tile />} Article={<Component {...pageProps} />} />
     </>
   );
 }
