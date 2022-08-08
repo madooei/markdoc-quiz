@@ -1,5 +1,6 @@
 ---
 title: Quiz
+description: Sample quiz
 ---
 
 # Quiz
