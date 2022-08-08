@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-// <Quiz>  .....  </Quiz>
-
 export function Quiz({ shuffle = false, children }) {
   const [shuffleOptions, setShuffleOptions] = useState(false);
   const [myChildren, setMyChildren] = useState(null);
