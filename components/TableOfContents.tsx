@@ -11,8 +11,8 @@ export function TableOfContents({toc}) {
   }
 
   return (
-    <nav className="toc">
-      <ul className="flex column">
+    <div className='aside'>
+      <ul>
         {items.map((item) => {
           const href = `#${item.id}`;
           const active =
@@ -36,15 +36,11 @@ export function TableOfContents({toc}) {
       </ul>
       <style jsx>
         {`
-          nav {
-            position: sticky;
-            top: calc(2.5rem + var(--top-nav-height));
-            max-height: calc(100vh - var(--top-nav-height));
+          .aside {
             flex: 0 0 auto;
             align-self: flex-start;
             margin-bottom: 1rem;
             padding: 0.5rem 0 0;
-            border-left: 1px solid var(--border-color);
           }
           ul {
             margin: 0;
@@ -66,6 +62,6 @@ export function TableOfContents({toc}) {
           }
         `}
       </style>
-    </nav>
+    </div>
   );
 }

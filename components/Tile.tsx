@@ -3,7 +3,7 @@ function Dummy() {
     <div className="h-full w-full">
       <div className="h-full p-6">
         <svg
-          className="h-ful w-full bg-slate-50 text-slate-300 border-slate-300 border-dashed rounded border-2"
+          className="h-full w-full bg-slate-50 text-slate-300 border-slate-300 border-dashed rounded border-2"
           preserveAspectRatio="none"
           stroke="currentColor"
           fill="none"

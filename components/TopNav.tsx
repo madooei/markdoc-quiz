@@ -3,27 +3,23 @@ import Link from 'next/link';
 
 export function TopNav({children}) {
   return (
-    <nav>
-      <Link href="/" className="flex">
+    <div className='topnav'>
+      <Link href="/" className='flex'>
         Home
       </Link>
       <section>{children}</section>
       <style jsx>
         {`
-          nav {
-            top: 0;
-            position: fixed;
+          .topnav {
             width: 100%;
-            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
             padding: 1rem 2rem;
             background: white;
-            border-bottom: 1px solid var(--border-color);
           }
-          nav :global(a) {
+          .topnav :global(a) {
             text-decoration: none;
           }
           section {
@@ -33,6 +29,6 @@ export function TopNav({children}) {
           }
         `}
       </style>
-    </nav>
+    </div>
   );
 }
