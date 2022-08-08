@@ -1,11 +1,36 @@
 import Head from "next/head";
+import Link from "next/link";
 import type { AppProps } from "next/app";
 import "../public/globals.css";
 import Tile from "../components/Tile";
 import Layout from "../components/Layout";
+import { SideNav, TableOfContents, TopNav } from "../components";
 
 const TITLE = "Markdoc";
 const DESCRIPTION = "A powerful, flexible, Markdown-based authoring framework";
+
+function collectHeadings(node, sections = []) {
+  if (node) {
+    if (node.name === "Heading") {
+      const title = node.children[0];
+
+      if (typeof title === "string") {
+        sections.push({
+          ...node.attributes,
+          title,
+        });
+      }
+    }
+
+    if (node.children) {
+      for (const child of node.children) {
+        collectHeadings(child, sections);
+      }
+    }
+  }
+
+  return sections;
+}
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { markdoc } = pageProps;
@@ -21,6 +46,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     }
   }
 
+  const toc = pageProps.markdoc?.content
+    ? collectHeadings(pageProps.markdoc.content)
+    : [];
+
   return (
     <>
       <Head>
@@ -32,7 +61,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout Nav={<Tile />} Article={<Component {...pageProps} />} />
+      <Layout
+        Nav={<SideNav />}
+        Header={
+          <TopNav>
+            <Link href="/docs">Docs</Link>
+          </TopNav>
+        }
+        // Footer={<Tile />}
+        Article={<Component {...pageProps} />}
+        Aside={<TableOfContents toc={toc} />}
+      />
     </>
   );
 }
