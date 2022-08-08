@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./Layout.module.css";
+import { VscGear } from "react-icons/vsc"
 
 function Layout(props) {
   const layout = useRef(null);
@@ -182,7 +183,7 @@ function Layout(props) {
       onMouseUp={handleOnMouseUp}
     >
       <div ref={sidebar} className={styles.sidebar}>
-        {props.Bar || "Bar"}
+        {props.Bar || <VscGear size={60}/>}
       </div>
       <nav ref={nav} className={styles.nav}>
         {props.Nav || "Nav"}
